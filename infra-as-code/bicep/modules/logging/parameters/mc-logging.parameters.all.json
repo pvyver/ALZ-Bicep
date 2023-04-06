@@ -6,13 +6,13 @@
       "value": "alz-log-analytics"
     },
     "parLogAnalyticsWorkspaceLocation": {
-      "value": "chinaeast2"
+      "value": "westeurope"
     },
     "parLogAnalyticsWorkspaceSkuName": {
       "value": "PerGB2018"
     },
     "parLogAnalyticsWorkspaceLogRetentionInDays": {
-      "value": 365
+      "value": 30
     },
     "parLogAnalyticsWorkspaceSolutions": {
       "value": [
@@ -33,7 +33,7 @@
       "value": "alz-automation-account"
     },
     "parAutomationAccountLocation": {
-      "value": "chinaeast2"
+      "value": "westeurope"
     },
     "parAutomationAccountUseManagedIdentity": {
       "value": true
