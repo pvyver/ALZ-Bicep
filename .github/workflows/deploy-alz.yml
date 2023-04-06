@@ -134,17 +134,17 @@ jobs:
       #     deploymentName: create_subscription_placement-${{ env.runNumber }}
       #     failOnStdErr: false
 
-      - name: Deploy Default Policy Assignments
-        id: create_policy_assignments
-        uses: azure/arm-deploy@v1
-        with:
-          scope: managementgroup
-          managementGroupId: ${{ env.ManagementGroupPrefix }}
-          region: ${{ env.Location }}
-          template: infra-as-code/bicep/modules/policy/assignments/alzDefaults/alzDefaultPolicyAssignments.bicep
-          parameters: infra-as-code/bicep/modules/policy/assignments/alzDefaults/parameters/alzDefaultPolicyAssignments.parameters.all.json
-          deploymentName: create_policy_assignments-${{ env.runNumber }}
-          failOnStdErr: false
+      # - name: Deploy Default Policy Assignments
+      #   id: create_policy_assignments
+      #   uses: azure/arm-deploy@v1
+      #   with:
+      #     scope: managementgroup
+      #     managementGroupId: ${{ env.ManagementGroupPrefix }}
+      #     region: ${{ env.Location }}
+      #     template: infra-as-code/bicep/modules/policy/assignments/alzDefaults/alzDefaultPolicyAssignments.bicep
+      #     parameters: infra-as-code/bicep/modules/policy/assignments/alzDefaults/parameters/alzDefaultPolicyAssignments.parameters.all.json
+      #     deploymentName: create_policy_assignments-${{ env.runNumber }}
+      #     failOnStdErr: false
 
       # - name: Deploy Spoke Networking Resource Group
       #   id: create_spoke_network_rg
