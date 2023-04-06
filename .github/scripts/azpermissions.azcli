@@ -1,0 +1,4 @@
+# Create a service principal for a resource group using a preferred name and role
+az ad sp create-for-rbac --name spn-azure-platform-ops `
+                         --role owner `
+                         --scopes /

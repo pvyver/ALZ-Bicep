@@ -23,7 +23,7 @@ param parTopLevelManagementGroupParentId string = ''
 param parLandingZoneMgAlzDefaultsEnable bool = true
 
 @sys.description('Deploys Confidential Corp & Confidential Online Management Groups beneath Landing Zones Management Group if set to true.')
-param parLandingZoneMgConfidentialEnable bool = false
+param parLandingZoneMgConfidentialEnable bool = true
 
 @sys.description('Dictionary Object to allow additional or different child Management Groups of Landing Zones Management Group to be deployed.')
 param parLandingZoneMgChildren object = {}
