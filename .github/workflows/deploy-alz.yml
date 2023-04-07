@@ -173,8 +173,8 @@ jobs:
         id: hub_peered_spoke
         uses: azure/arm-deploy@v1
         with:
-          scope: subscription
-          subscriptionId: ${{ env.SpokeNetworkSubId }}
+          scope: managementgroup
+          subscriptionId: ${{ env.ManagementGroupPrefix }}
           region: ${{ env.Location }}
           template: infra-as-code/bicep/orchestration/hubPeeredSpoke/hubPeeredSpoke.bicep
           parameters: infra-as-code/bicep/orchestration/hubPeeredSpoke/parameters/hubPeeredSpoke.parameters.all.json
