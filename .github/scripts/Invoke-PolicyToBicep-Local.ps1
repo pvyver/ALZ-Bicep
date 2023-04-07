@@ -13,7 +13,7 @@ param (
   [string]
   $rootPath = "./infra-as-code/bicep/modules/policy",
   [string]
-  $alzToolsPath = "$PWD/../Enterprise-Scale/src/Alz.Tools",
+  $alzToolsPath = "./.github\Enterprise-Scale\src\Alz.Tools",
   [string]
   $definitionsRoot = "definitions",
   [string]
