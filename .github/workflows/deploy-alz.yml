@@ -146,25 +146,37 @@ jobs:
       #     deploymentName: create_policy_assignments-${{ env.runNumber }}
       #     failOnStdErr: false
 
-      - name: Deploy Spoke Networking Resource Group
-        id: create_spoke_network_rg
+      # - name: Deploy Spoke Networking Resource Group
+      #   id: create_spoke_network_rg
+      #   uses: azure/arm-deploy@v1
+      #   with:
+      #     scope: subscription
+      #     subscriptionId: ${{ env.SpokeNetworkSubId }}
+      #     region: ${{ env.Location }}
+      #     template: infra-as-code/bicep/modules/resourceGroup/resourceGroup.bicep
+      #     parameters: parResourceGroupName=${{ env.SpokeNetworkResourceGroupName }} parLocation=${{ env.Location }}
+      #     deploymentName: create_spoke_network_rg-${{ env.runNumber }}
+      #     failOnStdErr: false
+
+      # - name: Deploy Spoke Network
+      #   id: create_spoke_network
+      #   uses: azure/arm-deploy@v1
+      #   with:
+      #     subscriptionId: ${{ env.SpokeNetworkSubId }}
+      #     resourceGroupName: ${{ env.SpokeNetworkResourceGroupName }}
+      #     template: infra-as-code/bicep/modules/spokeNetworking/spokeNetworking.bicep
+      #     parameters: infra-as-code/bicep/modules/spokeNetworking/parameters/spokeNetworking.parameters.all.json
+      #     deploymentName: create_spoke_network-${{ env.runNumber }}
+      #     failOnStdErr: false
+
+      - name: Deploy Hub Peered Spoke
+        id: hub_peered_spoke
         uses: azure/arm-deploy@v1
         with:
           scope: subscription
           subscriptionId: ${{ env.SpokeNetworkSubId }}
           region: ${{ env.Location }}
-          template: infra-as-code/bicep/modules/resourceGroup/resourceGroup.bicep
-          parameters: parResourceGroupName=${{ env.SpokeNetworkResourceGroupName }} parLocation=${{ env.Location }}
-          deploymentName: create_spoke_network_rg-${{ env.runNumber }}
-          failOnStdErr: false
-
-      - name: Deploy Spoke Network
-        id: create_spoke_network
-        uses: azure/arm-deploy@v1
-        with:
-          subscriptionId: ${{ env.SpokeNetworkSubId }}
-          resourceGroupName: ${{ env.SpokeNetworkResourceGroupName }}
-          template: infra-as-code/bicep/modules/spokeNetworking/spokeNetworking.bicep
-          parameters: infra-as-code/bicep/modules/spokeNetworking/parameters/spokeNetworking.parameters.all.json
-          deploymentName: create_spoke_network-${{ env.runNumber }}
+          template: infra-as-code/bicep/orchestration/hubPeeredSpoke.bicep
+          parameters: infra-as-code/bicep/orchestration/hubPeeredSpoke/parameters/hubPeeredSpoke.parameters.all.json
+          deploymentName: create_hub_peered_spoke-${{ env.runNumber }}
           failOnStdErr: false

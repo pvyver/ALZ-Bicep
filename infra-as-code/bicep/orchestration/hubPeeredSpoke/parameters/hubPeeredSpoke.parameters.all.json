@@ -12,16 +12,16 @@
       "value": ""
     },
     "parPeeredVnetSubscriptionId": {
-      "value": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+      "value": "73d1976a-3d59-4c49-948e-847f08f43071"
     },
     "parPeeredVnetSubscriptionMgPlacement": {
-      "value": "alz-platform-connectivity"
+      "value": ""
     },
     "parDdosProtectionPlanId": {
       "value": ""
     },
     "parSpokeNetworkName": {
-      "value": "vnet-spoke"
+      "value": "vnet-spoke-weu-prd"
     },
     "parSpokeNetworkAddressPrefix": {
       "value": "10.202.0.0/24"
@@ -30,16 +30,16 @@
       "value": []
     },
     "parNextHopIpAddress": {
-      "value": "10.20.255.4"
+      "value": ""
     },
     "parDisableBgpRoutePropagation": {
       "value": false
     },
     "parSpoketoHubRouteTableName": {
-      "value": "rtb-spoke-to-hub"
+      "value": "rt-spoke-to-hub"
     },
     "parHubVirtualNetworkId": {
-      "value": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/alz-westeurope-hub-networking/providers/Microsoft.Network/virtualNetworks/alz-hub-westeurope"
+      "value": "/subscriptions/73d1976a-3d59-4c49-948e-847f08f43071/resourceGroups/rg-hubnetwork-weu-shrd/providers/Microsoft.Network/virtualNetworks/vnet-hub-weu-shrd"
     },
     "parAllowSpokeForwardedTraffic": {
       "value": false
