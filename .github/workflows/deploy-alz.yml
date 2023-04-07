@@ -9,10 +9,10 @@ env:
   LoggingSubId: "73d1976a-3d59-4c49-948e-847f08f43071"
   LoggingResourceGroupName: "alz-logging"
   HubNetworkSubId: "73d1976a-3d59-4c49-948e-847f08f43071"
-  HubNetworkResourceGroupName: "Hub_Networking"
+  HubNetworkResourceGroupName: "rg-hubnetwork-weu-shrd"
   RoleAssignmentManagementGroupId: "alz-platform"
   SpokeNetworkSubId: "73d1976a-3d59-4c49-948e-847f08f43071"
-  SpokeNetworkResourceGroupName: "Spoke_Networking"
+  SpokeNetworkResourceGroupName: "rg-spokenetwork-weu-prd"
   runNumber: ${{ github.run_number }}
 
 jobs:
@@ -99,16 +99,16 @@ jobs:
           deploymentName: create_hub_network_rg-${{ env.runNumber }}
           failOnStdErr: false
 
-      # - name: Deploy Hub Network
-      #   id: create_hub_network
-      #   uses: azure/arm-deploy@v1
-      #   with:
-      #     subscriptionId: ${{ env.HubNetworkSubId }}
-      #     resourceGroupName: ${{ env.HubNetworkResourceGroupName }}
-      #     template: infra-as-code/bicep/modules/hubNetworking/hubNetworking.bicep
-      #     parameters: infra-as-code/bicep/modules/hubNetworking/parameters/hubNetworking.parameters.all.json
-      #     deploymentName: create_hub_network-${{ env.runNumber }}
-      #     failOnStdErr: false
+      - name: Deploy Hub Network
+        id: create_hub_network
+        uses: azure/arm-deploy@v1
+        with:
+          subscriptionId: ${{ env.HubNetworkSubId }}
+          resourceGroupName: ${{ env.HubNetworkResourceGroupName }}
+          template: infra-as-code/bicep/modules/hubNetworking/hubNetworking.bicep
+          parameters: infra-as-code/bicep/modules/hubNetworking/parameters/hubNetworking.parameters.all.json
+          deploymentName: create_hub_network-${{ env.runNumber }}
+          failOnStdErr: false
 
       # - name: Deploy Role Assignment
       #   id: create_role_assignment
@@ -158,13 +158,13 @@ jobs:
           deploymentName: create_spoke_network_rg-${{ env.runNumber }}
           failOnStdErr: false
 
-      # - name: Deploy Spoke Network
-      #   id: create_spoke_network
-      #   uses: azure/arm-deploy@v1
-      #   with:
-      #     subscriptionId: ${{ env.SpokeNetworkSubId }}
-      #     resourceGroupName: ${{ env.SpokeNetworkResourceGroupName }}
-      #     template: infra-as-code/bicep/modules/spokeNetworking/spokeNetworking.bicep
-      #     parameters: infra-as-code/bicep/modules/spokeNetworking/parameters/spokeNetworking.parameters.all.json
-      #     deploymentName: create_spoke_network-${{ env.runNumber }}
-      #     failOnStdErr: false
+      - name: Deploy Spoke Network
+        id: create_spoke_network
+        uses: azure/arm-deploy@v1
+        with:
+          subscriptionId: ${{ env.SpokeNetworkSubId }}
+          resourceGroupName: ${{ env.SpokeNetworkResourceGroupName }}
+          template: infra-as-code/bicep/modules/spokeNetworking/spokeNetworking.bicep
+          parameters: infra-as-code/bicep/modules/spokeNetworking/parameters/spokeNetworking.parameters.all.json
+          deploymentName: create_spoke_network-${{ env.runNumber }}
+          failOnStdErr: false

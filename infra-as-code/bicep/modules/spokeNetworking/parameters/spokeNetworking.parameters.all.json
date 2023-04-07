@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "parLocation": {
-      "value": "eastus"
+      "value": "westeurope"
     },
     "parDisableBgpRoutePropagation": {
       "value": false
@@ -15,7 +15,7 @@
       "value": "10.11.0.0/16"
     },
     "parSpokeNetworkName": {
-      "value": "vnet-spoke"
+      "value": "vnet-spoke-weu-prd"
     },
     "parDnsServerIps": {
       "value": []

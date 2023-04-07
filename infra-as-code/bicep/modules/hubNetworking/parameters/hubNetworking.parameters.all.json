@@ -9,7 +9,7 @@
       "value": "alz"
     },
     "parHubNetworkName": {
-      "value": "alz-hub-westeurope"
+      "value": "vnet-hub-weu-shrd"
     },
     "parHubNetworkAddressPrefix": {
       "value": "10.20.0.0/16"
@@ -34,7 +34,7 @@
       "value": []
     },
     "parPublicIpSku": {
-      "value": "Standard"
+      "value": "Basic"
     },
     "parAzBastionEnabled": {
       "value": false
@@ -43,7 +43,7 @@
       "value": "alz-bastion"
     },
     "parAzBastionSku": {
-      "value": "Standard"
+      "value": "Basic"
     },
     "parAzBastionNsgName": {
       "value": "nsg-AzureBastionSubnet"
@@ -155,44 +155,10 @@
       ]
     },
     "parVpnGatewayConfig": {
-      "value": {
-        "name": "alz-Vpn-Gateway",
-        "gatewayType": "Vpn",
-        "sku": "VpnGw1",
-        "vpnType": "RouteBased",
-        "generation": "Generation1",
-        "enableBgp": false,
-        "activeActive": false,
-        "enableBgpRouteTranslationForNat": false,
-        "enableDnsForwarding": false,
-        "asn": "65515",
-        "bgpPeeringAddress": "",
-        "bgpsettings": {
-          "asn": "65515",
-          "bgpPeeringAddress": "",
-          "peerWeight": "5"
-        }
-      }
+      "value": {}
     },
     "parExpressRouteGatewayConfig": {
-      "value": {
-        "name": "alz-ExpressRoute-Gateway",
-        "gatewayType": "ExpressRoute",
-        "sku": "Standard",
-        "vpnType": "RouteBased",
-        "generation": "None",
-        "enableBgp": false,
-        "activeActive": false,
-        "enableBgpRouteTranslationForNat": false,
-        "enableDnsForwarding": false,
-        "asn": "65515",
-        "bgpPeeringAddress": "",
-        "bgpsettings": {
-          "asn": "65515",
-          "bgpPeeringAddress": "",
-          "peerWeight": "5"
-        }
-      }
+      "value": {}
     },
     "parTags": {
       "value": {
