@@ -195,6 +195,7 @@ jobs:
 
   bicep_tenant_deploy:
       runs-on: ubuntu-latest
+      needs: bicep_tenant_build
       permissions:
         id-token: write
         contents: read
