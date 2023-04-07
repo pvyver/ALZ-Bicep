@@ -9,10 +9,10 @@ env:
   LoggingSubId: "73d1976a-3d59-4c49-948e-847f08f43071"
   LoggingResourceGroupName: "alz-logging"
   HubNetworkSubId: "73d1976a-3d59-4c49-948e-847f08f43071"
-  HubNetworkResourceGroupName: "Hub_Networking_POC"
+  HubNetworkResourceGroupName: "Hub_Networking"
   RoleAssignmentManagementGroupId: "alz-platform"
   SpokeNetworkSubId: "73d1976a-3d59-4c49-948e-847f08f43071"
-  SpokeNetworkResourceGroupName: "Spoke_Networking_POC"
+  SpokeNetworkResourceGroupName: "Spoke_Networking"
   runNumber: ${{ github.run_number }}
 
 jobs:
@@ -87,17 +87,17 @@ jobs:
           deploymentName: create_logging-${{ env.runNumber }}
           failOnStdErr: false
 
-      # - name: Deploy Hub Networking Resource Group
-      #   id: create_hub_network_rg
-      #   uses: azure/arm-deploy@v1
-      #   with:
-      #     scope: subscription
-      #     subscriptionId: ${{ env.HubNetworkSubId }}
-      #     region: ${{ env.Location }}
-      #     template: infra-as-code/bicep/modules/resourceGroup/resourceGroup.bicep
-      #     parameters: parResourceGroupName=${{ env.HubNetworkResourceGroupName }} parLocation=${{ env.Location }}
-      #     deploymentName: create_hub_network_rg-${{ env.runNumber }}
-      #     failOnStdErr: false
+      - name: Deploy Hub Networking Resource Group
+        id: create_hub_network_rg
+        uses: azure/arm-deploy@v1
+        with:
+          scope: subscription
+          subscriptionId: ${{ env.HubNetworkSubId }}
+          region: ${{ env.Location }}
+          template: infra-as-code/bicep/modules/resourceGroup/resourceGroup.bicep
+          parameters: parResourceGroupName=${{ env.HubNetworkResourceGroupName }} parLocation=${{ env.Location }}
+          deploymentName: create_hub_network_rg-${{ env.runNumber }}
+          failOnStdErr: false
 
       # - name: Deploy Hub Network
       #   id: create_hub_network
@@ -122,17 +122,17 @@ jobs:
       #     deploymentName: create_role_assignment-${{ env.runNumber }}
       #     failOnStdErr: false
 
-      # - name: Deploy Subscription Placement
-      #   id: create_subscription_placement
-      #   uses: azure/arm-deploy@v1
-      #   with:
-      #     scope: managementgroup
-      #     managementGroupId: ${{ env.ManagementGroupPrefix }}
-      #     region: ${{ env.Location }}
-      #     template: infra-as-code/bicep/modules/subscriptionPlacement/subscriptionPlacement.bicep
-      #     parameters: infra-as-code/bicep/modules/subscriptionPlacement/parameters/subscriptionPlacement.parameters.all.json
-      #     deploymentName: create_subscription_placement-${{ env.runNumber }}
-      #     failOnStdErr: false
+      - name: Deploy Subscription Placement
+        id: create_subscription_placement
+        uses: azure/arm-deploy@v1
+        with:
+          scope: managementgroup
+          managementGroupId: ${{ env.ManagementGroupPrefix }}
+          region: ${{ env.Location }}
+          template: infra-as-code/bicep/modules/subscriptionPlacement/subscriptionPlacement.bicep
+          parameters: infra-as-code/bicep/modules/subscriptionPlacement/parameters/subscriptionPlacement.parameters.all.json
+          deploymentName: create_subscription_placement-${{ env.runNumber }}
+          failOnStdErr: false
 
       # - name: Deploy Default Policy Assignments
       #   id: create_policy_assignments
@@ -146,17 +146,17 @@ jobs:
       #     deploymentName: create_policy_assignments-${{ env.runNumber }}
       #     failOnStdErr: false
 
-      # - name: Deploy Spoke Networking Resource Group
-      #   id: create_spoke_network_rg
-      #   uses: azure/arm-deploy@v1
-      #   with:
-      #     scope: subscription
-      #     subscriptionId: ${{ env.SpokeNetworkSubId }}
-      #     region: ${{ env.Location }}
-      #     template: infra-as-code/bicep/modules/resourceGroup/resourceGroup.bicep
-      #     parameters: parResourceGroupName=${{ env.SpokeNetworkResourceGroupName }} parLocation=${{ env.Location }}
-      #     deploymentName: create_spoke_network_rg-${{ env.runNumber }}
-      #     failOnStdErr: false
+      - name: Deploy Spoke Networking Resource Group
+        id: create_spoke_network_rg
+        uses: azure/arm-deploy@v1
+        with:
+          scope: subscription
+          subscriptionId: ${{ env.SpokeNetworkSubId }}
+          region: ${{ env.Location }}
+          template: infra-as-code/bicep/modules/resourceGroup/resourceGroup.bicep
+          parameters: parResourceGroupName=${{ env.SpokeNetworkResourceGroupName }} parLocation=${{ env.Location }}
+          deploymentName: create_spoke_network_rg-${{ env.runNumber }}
+          failOnStdErr: false
 
       # - name: Deploy Spoke Network
       #   id: create_spoke_network
