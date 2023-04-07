@@ -426,3 +426,7 @@
 	name: 'Deploy-Windows-DomainJoin'
 	libDefinition: loadJsonContent('lib/policy_definitions/policy_definition_es_Deploy-Windows-DomainJoin.json')
 }
+{
+	name: 'Modify-Tag-Add-DateCreated'
+	libDefinition: loadJsonContent('lib/policy_definitions/policy_definition_es_Modify-Tag-Add-DateCreated.json')
+}

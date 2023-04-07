@@ -12,8 +12,7 @@ param parTelemetryOptOut bool = false
 var varTargetManagementGroupResourceId = tenantResourceId('Microsoft.Management/managementGroups', parTargetManagementGroupId)
 
 // This variable contains a number of objects that load in the custom Azure Policy Defintions that are provided as part of the ESLZ/ALZ reference implementation - this is automatically created in the file 'infra-as-code\bicep\modules\policy\lib\policy_definitions\_policyDefinitionsBicepInput.txt' via a GitHub action, that runs on a daily schedule, and is then manually copied into this variable.
-var varCustomPolicyDefinitionsArray = [
-  {
+var varCustomPolicyDefinitionsArray = [ {
     name: 'Append-AppService-httpsonly'
     libDefinition: loadJsonContent('lib/policy_definitions/policy_definition_es_Append-AppService-httpsonly.json')
   }
@@ -440,6 +439,10 @@ var varCustomPolicyDefinitionsArray = [
   {
     name: 'Deploy-Windows-DomainJoin'
     libDefinition: loadJsonContent('lib/policy_definitions/policy_definition_es_Deploy-Windows-DomainJoin.json')
+  }
+  {
+    name: 'Modify-Tag-Add-DateCreated'
+    libDefinition: loadJsonContent('lib/policy_definitions/policy_definition_es_Modify-Tag-Add-DateCreated.json')
   }
 ]
 

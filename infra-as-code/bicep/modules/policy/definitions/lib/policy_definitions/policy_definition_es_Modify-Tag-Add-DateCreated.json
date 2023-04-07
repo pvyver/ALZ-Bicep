@@ -1,5 +1,5 @@
 {
-  "name": "Append-AppService-httpsonly",
+  "name": "Modify-Tag-Add-DateCreated",
   "type": "Microsoft.Authorization/policyDefinitions",
   "apiVersion": "2021-06-01",
   "scope": null,
