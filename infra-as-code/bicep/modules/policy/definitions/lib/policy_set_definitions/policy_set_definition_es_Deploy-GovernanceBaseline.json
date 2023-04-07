@@ -1,0 +1,44 @@
+{
+  "name": "Deploy-Governance",
+  "type": "Microsoft.Authorization/policySetDefinitions",
+  "apiVersion": "2021-06-01",
+  "scope": null,
+  "properties": {
+    "policyType": "Custom",
+    "displayName": "Deploy Governance Baseline configuration",
+    "description": "Deploy Governance Baseline configuration",
+    "metadata": {
+      "version": "1.0.0",
+      "category": "Governance",
+      "source": "https://github.com/Azure/Enterprise-Scale/",
+      "alzCloudEnvironments": [
+        "AzureCloud",
+        "AzureChinaCloud",
+        "AzureUSGovernment"
+      ]
+    },
+    "parameters": {
+      "DateCreatedTagName": {
+        "type": "String",
+        "defaultValue": "DateCreated",
+        "metadata": {
+          "displayName": "Tag Name",
+          "description": "Name of the tag, such as 'DateCreated'"
+        }
+      }
+    },
+    "policyDefinitions": [
+      {
+        "policyDefinitionReferenceId": "AddDateCreatedTag",
+        "policyDefinitionId": "${varTargetManagementGroupResourceId}/providers/Microsoft.Authorization/policyDefinitions/Modify-Tag-Add-DateCreated",
+        "parameters": {
+          "effect": {
+            "value": "[[parameters('DateCreatedTagName')]"
+          }
+        },
+        "groupNames": []
+      }
+    ],
+    "policyDefinitionGroups": null
+  }
+}

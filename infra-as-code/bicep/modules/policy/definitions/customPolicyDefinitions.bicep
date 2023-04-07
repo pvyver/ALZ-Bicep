@@ -935,6 +935,18 @@ var varCustomPolicySetDefinitionsArray = [
     ]
   }
   {
+    name: 'Deploy-Governance'
+    libSetDefinition: loadJsonContent('lib/policy_set_definitions/policy_set_definition_es_Deploy-GovernanceBaseline.json')
+    libSetChildDefinitions: [
+      {
+        definitionReferenceId: 'AddDateCreatedTag'
+        definitionId: '${varTargetManagementGroupResourceId}/providers/Microsoft.Authorization/policyDefinitions/Modify-Tag-Add-DateCreated'
+        definitionParameters: varPolicySetDefinitionEsDeployGovernanceBaselineParameters.AddDateCreatedTag.parameters
+        definitionGroups: []
+      }
+    ]
+  }
+  {
     name: 'Deploy-MDFC-Config'
     libSetDefinition: loadJsonContent('lib/policy_set_definitions/policy_set_definition_es_Deploy-MDFC-Config.json')
     libSetChildDefinitions: [
@@ -1577,6 +1589,8 @@ var varCustomPolicySetDefinitionsArray = [
 var varPolicySetDefinitionEsDenyPublicPaaSEndpointsParameters = loadJsonContent('lib/policy_set_definitions/policy_set_definition_es_Deny-PublicPaaSEndpoints.parameters.json')
 
 var varPolicySetDefinitionEsDeployDiagnosticsLogAnalyticsParameters = loadJsonContent('lib/policy_set_definitions/policy_set_definition_es_Deploy-Diagnostics-LogAnalytics.parameters.json')
+
+var varPolicySetDefinitionEsDeployGovernanceBaselineParameters = loadJsonContent('lib/policy_set_definitions/policy_set_definition_es_Deploy-GovernanceBaseline.parameters.json')
 
 var varPolicySetDefinitionEsDeployMDFCConfigParameters = loadJsonContent('lib/policy_set_definitions/policy_set_definition_es_Deploy-MDFC-Config.parameters.json')
 

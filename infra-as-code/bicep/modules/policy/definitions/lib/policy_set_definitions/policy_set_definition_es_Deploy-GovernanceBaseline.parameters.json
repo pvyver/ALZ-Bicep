@@ -1,0 +1,9 @@
+{
+  "AddDateCreatedTag": {
+    "parameters": {
+      "effect": {
+        "value": "[[parameters('DateCreatedTagName')]"
+      }
+    }
+  }
+}
