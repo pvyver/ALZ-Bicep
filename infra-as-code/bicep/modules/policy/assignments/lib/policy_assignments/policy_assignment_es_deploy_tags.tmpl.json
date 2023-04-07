@@ -7,7 +7,7 @@
     "displayName": "Deploy Tags",
     "notScopes": [],
     "parameters": {
-      "tagName": {
+      "DateCreatedTagName": {
         "value": "DateCreated"
       }
     },
