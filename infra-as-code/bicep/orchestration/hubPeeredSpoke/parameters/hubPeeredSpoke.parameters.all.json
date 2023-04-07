@@ -48,7 +48,7 @@
       "value": false
     },
     "parAllowHubVPNGatewayTransit": {
-      "value": true
+      "value": false
     },
     "parTags": {
       "value": {
