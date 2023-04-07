@@ -1,0 +1,47 @@
+{
+  "name": "Append-AppService-httpsonly",
+  "type": "Microsoft.Authorization/policyDefinitions",
+  "apiVersion": "2021-06-01",
+  "scope": null,
+  "properties": {
+    "policyType": "Custom",
+    "mode": "All",
+    "displayName": "Add DateCreated Tag to Resources",
+    "description": "This policy will add a \"DateCreated\" tag to all resources created after time of policy assignment (dd/mm/yyyy format).  Note if you run a remediation task for this policy it will add the current date as the value for the DateCreated tag.",
+    "metadata": {
+      "version": "1.0.0",
+      "category": "Tags"
+    },
+    "parameters": {
+      "tagName": {
+        "type": "String",
+        "defaultValue": "DateCreated",
+        "metadata": {
+          "displayName": "Tag Name",
+          "description": "Name of the tag, such as 'DateCreated'"
+        }
+      }
+    },
+    "policyRule": {
+      "if": {
+        "field": "[concat('tags[', parameters('tagName'), ']')]",
+        "exists": "false"
+      },
+      "then": {
+        "effect": "modify",
+        "details": {
+          "roleDefinitionIds": [
+            "/providers/microsoft.authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
+          ],
+          "operations": [
+            {
+              "operation": "add",
+              "field": "[concat('tags[', parameters('tagName'), ']')]",
+              "value": "[concat(substring(utcNow(),8,2), '/', substring(utcNow(),5,2), '/', substring(utcNow(),0,4))]"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
