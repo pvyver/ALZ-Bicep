@@ -174,7 +174,7 @@ jobs:
         uses: azure/arm-deploy@v1
         with:
           scope: managementgroup
-          subscriptionId: ${{ env.ManagementGroupPrefix }}
+          managementGroupId: ${{ env.ManagementGroupPrefix }}
           region: ${{ env.Location }}
           template: infra-as-code/bicep/orchestration/hubPeeredSpoke/hubPeeredSpoke.bicep
           parameters: infra-as-code/bicep/orchestration/hubPeeredSpoke/parameters/hubPeeredSpoke.parameters.all.json
