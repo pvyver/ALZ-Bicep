@@ -20,6 +20,9 @@
     "parDdosProtectionPlanId": {
       "value": ""
     },
+    "parResourceGroupNameForSpokeNetworking": {
+      "value": "rg-spokenetwork-weu-prd"
+    },
     "parSpokeNetworkName": {
       "value": "vnet-spoke-weu-prd"
     },
