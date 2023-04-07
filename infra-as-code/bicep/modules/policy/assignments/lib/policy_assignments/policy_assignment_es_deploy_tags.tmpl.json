@@ -1,0 +1,22 @@
+{
+  "name": "Deploy-Tags",
+  "type": "Microsoft.Authorization/policyAssignments",
+  "apiVersion": "2019-09-01",
+  "properties": {
+    "description": "Deploy Tags",
+    "displayName": "Deploy Tags",
+    "notScopes": [],
+    "parameters": {
+      "tagName": {
+        "value": "DateCreated"
+      }
+    },
+    "policyDefinitionId": "${varTopLevelManagementGroupResourceId}/providers/Microsoft.Authorization/policySetDefinitions/Deploy-Tags",
+    "scope": null,
+    "enforcementMode": "Default"
+  },
+  "location": null,
+  "identity": {
+    "type": "SystemAssigned"
+  }
+}

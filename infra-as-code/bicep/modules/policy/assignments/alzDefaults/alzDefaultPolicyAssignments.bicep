@@ -65,6 +65,7 @@ var varModuleDeploymentNames = {
   modPolicyAssignmentIntRootDeployResourceDiag: take('${varDeploymentNameWrappers.basePrefix}-polAssi-deployResoruceDiag-intRoot-${varDeploymentNameWrappers.baseSuffixTenantAndManagementGroup}', 64)
   modPolicyAssignmentIntRootDeployVmMonitoring: take('${varDeploymentNameWrappers.basePrefix}-polAssi-deployVMMonitoring-intRoot-${varDeploymentNameWrappers.baseSuffixTenantAndManagementGroup}', 64)
   modPolicyAssignmentIntRootDeployVmssMonitoring: take('${varDeploymentNameWrappers.basePrefix}-polAssi-deployVMSSMonitoring-intRoot-${varDeploymentNameWrappers.baseSuffixTenantAndManagementGroup}', 64)
+  modPolicyAssignmentIntRootDeployTags: take('${varDeploymentNameWrappers.basePrefix}-polAssi-deployTags-intRoot-${varDeploymentNameWrappers.baseSuffixTenantAndManagementGroup}', 64)
   modPolicyAssignmentConnEnableDdosVnet: take('${varDeploymentNameWrappers.basePrefix}-polAssi-enableDDoSVNET-conn-${varDeploymentNameWrappers.baseSuffixTenantAndManagementGroup}', 64)
   modPolicyAssignmentIdentDenyPublicIp: take('${varDeploymentNameWrappers.basePrefix}-polAssi-denyPublicIP-ident-${varDeploymentNameWrappers.baseSuffixTenantAndManagementGroup}', 64)
   modPolicyAssignmentIdentDenyRdpFromInternet: take('${varDeploymentNameWrappers.basePrefix}-polAssi-denyRDPFromInet-ident-${varDeploymentNameWrappers.baseSuffixTenantAndManagementGroup}', 64)
@@ -221,6 +222,11 @@ var varPolicyAssignmentEnableDDoSVNET = {
 var varPolicyAssignmentEnforceTLSSSL = {
   definitionId: '${varTopLevelManagementGroupResourceId}/providers/Microsoft.Authorization/policySetDefinitions/Enforce-EncryptTransit'
   libDefinition: loadJsonContent('../../../policy/assignments/lib/policy_assignments/policy_assignment_es_enforce_tls_ssl.tmpl.json')
+}
+
+var varPolicyAssignmentDeployTags = {
+	definitionId: '${varTopLevelManagementGroupResourceId}/providers/Microsoft.Authorization/policySetDefinitions/Deploy-Tags'
+	libDefinition: loadJsonContent('../../../policy/assignments/lib/policy_assignments/policy_assignment_es_deploy_tags.tmpl.json')
 }
 
 // RBAC Role Definitions Variables - Used For Policy Assignments
@@ -459,6 +465,26 @@ module modPolicyAssignmentIntRootDeployVmssMonitoring '../../../policy/assignmen
     parPolicyAssignmentIdentityRoleDefinitionIds: [
       varRbacRoleDefinitionIds.owner
     ]
+    parTelemetryOptOut: parTelemetryOptOut
+  }
+}
+
+// Module - Policy Assignment - Deploy-Tags
+module modPolicyAssignmentIntRootDeployTags '../../../policy/assignments/policyAssignmentManagementGroup.bicep' = {
+  scope: managementGroup(varManagementGroupIds.intRoot)
+  name: varModuleDeploymentNames.modPolicyAssignmentIntRootDeployTags
+  params: {
+    parPolicyAssignmentDefinitionId: varPolicyAssignmentDeployTags.definitionId
+    parPolicyAssignmentName: varPolicyAssignmentDeployTags.libDefinition.name
+    parPolicyAssignmentDisplayName: varPolicyAssignmentDeployTags.libDefinition.properties.displayName
+    parPolicyAssignmentDescription: varPolicyAssignmentDeployTags.libDefinition.properties.description
+    parPolicyAssignmentParameters: varPolicyAssignmentDeployTags.libDefinition.properties.parameters
+    parPolicyAssignmentParameterOverrides: {}
+    parPolicyAssignmentIdentityType: varPolicyAssignmentDeployTags.libDefinition.identity.type
+    parPolicyAssignmentIdentityRoleDefinitionIds: [
+      varRbacRoleDefinitionIds.owner
+    ]
+    parPolicyAssignmentEnforcementMode: parDisableAlzDefaultPolicies ? 'DoNotEnforce' : varPolicyAssignmentDeployTags.libDefinition.properties.enforcementMode
     parTelemetryOptOut: parTelemetryOptOut
   }
 }

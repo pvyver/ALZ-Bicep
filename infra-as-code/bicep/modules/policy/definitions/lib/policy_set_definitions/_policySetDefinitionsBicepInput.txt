@@ -486,18 +486,6 @@ var varCustomPolicySetDefinitionsArray = [
 		]
 	}
 	{
-		name: 'Deploy-Governance'
-		libSetDefinition: loadJsonContent('lib/policy_set_definitions/policy_set_definition_es_Deploy-GovernanceBaseline.json')
-		libSetChildDefinitions: [
-			{
-				definitionReferenceId: 'AddDateCreatedTag'
-				definitionId: '${varTargetManagementGroupResourceId}/providers/Microsoft.Authorization/policyDefinitions/Modify-Tag-Add-DateCreated'
-				definitionParameters: varPolicySetDefinitionEsDeployGovernanceBaselineParameters.AddDateCreatedTag.parameters
-				definitionGroups: []
-			}
-		]
-	}
-	{
 		name: 'Deploy-MDFC-Config'
 		libSetDefinition: loadJsonContent('lib/policy_set_definitions/policy_set_definition_es_Deploy-MDFC-Config.json')
 		libSetChildDefinitions: [
@@ -900,6 +888,18 @@ var varCustomPolicySetDefinitionsArray = [
 		]
 	}
 	{
+		name: 'Deploy-Tags'
+		libSetDefinition: loadJsonContent('lib/policy_set_definitions/policy_set_definition_es_Deploy-Tags.json')
+		libSetChildDefinitions: [
+			{
+				definitionReferenceId: 'AddDateCreatedTag'
+				definitionId: '${varTargetManagementGroupResourceId}/providers/Microsoft.Authorization/policyDefinitions/Modify-Tag-Add-DateCreated'
+				definitionParameters: varPolicySetDefinitionEsDeployTagsParameters.AddDateCreatedTag.parameters
+				definitionGroups: []
+			}
+		]
+	}
+	{
 		name: 'Enforce-Encryption-CMK'
 		libSetDefinition: loadJsonContent('lib/policy_set_definitions/policy_set_definition_es_Enforce-Encryption-CMK.json')
 		libSetChildDefinitions: [
@@ -1142,13 +1142,13 @@ var varPolicySetDefinitionEsDenyPublicPaaSEndpointsParameters = loadJsonContent(
 
 var varPolicySetDefinitionEsDeployDiagnosticsLogAnalyticsParameters = loadJsonContent('lib/policy_set_definitions/policy_set_definition_es_Deploy-Diagnostics-LogAnalytics.parameters.json')
 
-var varPolicySetDefinitionEsDeployGovernanceBaselineParameters = loadJsonContent('lib/policy_set_definitions/policy_set_definition_es_Deploy-GovernanceBaseline.parameters.json')
-
 var varPolicySetDefinitionEsDeployMDFCConfigParameters = loadJsonContent('lib/policy_set_definitions/policy_set_definition_es_Deploy-MDFC-Config.parameters.json')
 
 var varPolicySetDefinitionEsDeployPrivateDNSZonesParameters = loadJsonContent('lib/policy_set_definitions/policy_set_definition_es_Deploy-Private-DNS-Zones.parameters.json')
 
 var varPolicySetDefinitionEsDeploySqlSecurityParameters = loadJsonContent('lib/policy_set_definitions/policy_set_definition_es_Deploy-Sql-Security.parameters.json')
+
+var varPolicySetDefinitionEsDeployTagsParameters = loadJsonContent('lib/policy_set_definitions/policy_set_definition_es_Deploy-Tags.parameters.json')
 
 var varPolicySetDefinitionEsEnforceEncryptionCMKParameters = loadJsonContent('lib/policy_set_definitions/policy_set_definition_es_Enforce-Encryption-CMK.parameters.json')
 
