@@ -1,0 +1,31 @@
+name: Azure Login and Keyvault
+
+on: [workflow_dispatch]
+
+jobs:
+  bicep_tenant_build:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - uses: Azure/get-keyvault-secrets@v1
+        with:
+          keyvault: "kv-weu-tst-github" # name of key vault in Azure portal
+          secrets: 'mySecret, mySecret2'  # comma separated list of secret keys to fetch from key vault
+        id: myGetSecretAction # ID for secrets that you will reference
+
+      - name: Use that secret output (protected by a mask)
+        run: |
+          echo "the secret number is ${{ myGetSecretAction.outputs.mySecret }}"
+          echo "the secret number is ${{ myGetSecretAction.outputs.mySecret2 }}"
