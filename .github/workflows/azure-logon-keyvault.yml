@@ -27,5 +27,5 @@ jobs:
 
       - name: Use that secret output (protected by a mask)
         run: |
-          echo "the secret number is ${{ myGetSecretAction.outputs.mySecret }}"
-          echo "the secret number is ${{ myGetSecretAction.outputs.mySecret2 }}"
+          echo "the secret number is ${{ steps.myGetSecretAction.outputs.mySecret }}"
+          echo "the secret number is ${{ steps.myGetSecretAction.outputs.mySecret2 }}"
